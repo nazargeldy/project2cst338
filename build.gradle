@@ -4,7 +4,7 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'com.daclink'
+group = 'com.vila'
 version = '1.0-SNAPSHOT'
 
 java {
@@ -12,23 +12,24 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-javafx {
-    version = '22'
-    modules = ['javafx.controls', 'javafx.fxml']
-}
-
-application {
-    mainClass = 'Main'
-}
-
 repositories {
     mavenCentral()
 }
 
+javafx {
+    version = '21'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    implementation 'org.xerial:sqlite-jdbc:3.45.3.0'
+    testImplementation platform('org.junit:junit-bom:5.10.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+application {
+    mainClass = 'com.vila.VilaApp'
 }
 
 test {

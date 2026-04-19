@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vila.controller.CartController"
+            styleClass="root-pane">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
+            <Text text="VILA" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="Continue Shopping" onAction="#onContinueShopping" styleClass="btn-ghost"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0" styleClass="cart-layout">
+
+            <!-- Cart items -->
+            <VBox HBox.hgrow="ALWAYS" spacing="16" styleClass="cart-items-panel">
+                <Text text="YOUR BAG" styleClass="section-title"/>
+                <ListView fx:id="cartList" VBox.vgrow="ALWAYS" styleClass="cart-list"/>
+            </VBox>
+
+            <!-- Order summary sidebar -->
+            <VBox spacing="16" styleClass="order-summary" minWidth="320">
+                <Text text="ORDER SUMMARY" styleClass="section-title"/>
+                <Separator/>
+                <HBox>
+                    <Label text="Total" HBox.hgrow="ALWAYS" styleClass="summary-key"/>
+                    <Label fx:id="totalLabel" text="$0.00" styleClass="total-value"/>
+                </HBox>
+                <Separator/>
+                <Button text="PROCEED TO CHECKOUT" onAction="#onCheckout"
+                        styleClass="btn-primary" maxWidth="Infinity"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

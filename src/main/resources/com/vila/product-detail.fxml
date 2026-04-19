@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vila.controller.ProductDetailController"
+            styleClass="root-pane">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
+            <Text text="VILA" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="← Back" onAction="#onBack" styleClass="btn-ghost"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0" styleClass="detail-layout">
+
+            <!-- Product image area -->
+            <StackPane styleClass="product-image-placeholder" HBox.hgrow="ALWAYS" minHeight="580"/>
+
+            <!-- Product info panel -->
+            <VBox spacing="22" styleClass="product-info" minWidth="380">
+                <Label fx:id="productName" text="Product Name" styleClass="product-title"/>
+                <Label fx:id="productPrice" text="$0.00" styleClass="product-price"/>
+
+                <VBox spacing="8">
+                    <Text text="SIZE" styleClass="field-label"/>
+                    <ComboBox fx:id="sizeSelector" promptText="Select size"
+                              styleClass="size-selector" maxWidth="Infinity"/>
+                    <Label fx:id="sizeError" styleClass="error-label"/>
+                </VBox>
+
+                <Button text="ADD TO BAG" onAction="#onAddToCart"
+                        styleClass="btn-primary" maxWidth="Infinity"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

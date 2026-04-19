@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vila.controller.LoginController"
+            styleClass="root-pane">
+
+    <center>
+        <VBox alignment="CENTER" spacing="28" styleClass="login-container">
+
+            <VBox alignment="CENTER" spacing="4">
+                <Text text="VILA" styleClass="brand-wordmark"/>
+                <Text text="ACTIVEWEAR" styleClass="brand-subtext"/>
+            </VBox>
+
+            <VBox spacing="14" styleClass="form-group">
+                <TextField fx:id="usernameField" promptText="Username" styleClass="text-input"/>
+                <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-input"/>
+                <Label fx:id="errorLabel" styleClass="error-label"/>
+            </VBox>
+
+            <VBox spacing="10" alignment="CENTER">
+                <Button text="SIGN IN" onAction="#onLogin" styleClass="btn-primary" maxWidth="Infinity"/>
+                <Button text="CREATE ACCOUNT" onAction="#onRegister" styleClass="btn-secondary" maxWidth="Infinity"/>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

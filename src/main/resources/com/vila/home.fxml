@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vila.controller.HomeController"
+            styleClass="root-pane">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
+            <Text text="VILA" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" promptText="Search" styleClass="search-input" prefWidth="220"/>
+            <Button text="Search" onAction="#onSearch" styleClass="btn-ghost"/>
+            <Button text="Bag (0)" onAction="#onCartClick" styleClass="btn-ghost"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="40" styleClass="content-area">
+
+                <!-- Hero banner -->
+                <StackPane styleClass="hero-banner" minHeight="380">
+                    <VBox alignment="CENTER" spacing="18">
+                        <Text text="NEW ARRIVALS" styleClass="hero-title"/>
+                        <Text text="Movement-ready pieces, minimal by design." styleClass="hero-subtitle"/>
+                        <Button text="SHOP NOW" styleClass="btn-primary"/>
+                    </VBox>
+                </StackPane>
+
+                <!-- Featured products -->
+                <VBox spacing="20" styleClass="section">
+                    <Text text="FEATURED" styleClass="section-title"/>
+                    <GridPane hgap="20" vgap="20" styleClass="product-grid">
+                        <!-- Product cards populated by HomeController -->
+                    </GridPane>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
