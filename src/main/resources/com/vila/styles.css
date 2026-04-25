@@ -1,14 +1,9 @@
-/* Vila Activewear – base stylesheet */
-
-/* ── Root ─────────────────────────────────────────────── */
 .root-pane {
     -fx-background-color: #FAFAF8;
-    -fx-font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
-/* ── Brand / wordmark ─────────────────────────────────── */
 .brand-wordmark {
-    -fx-font-size: 52px;
+    -fx-font-size: 48px;
     -fx-font-weight: bold;
     -fx-fill: #1A1A1A;
 }
@@ -16,10 +11,8 @@
 .brand-subtext {
     -fx-font-size: 11px;
     -fx-fill: #888880;
-    -fx-letter-spacing: 5px;
 }
 
-/* ── Navbar ───────────────────────────────────────────── */
 .navbar {
     -fx-background-color: #FAFAF8;
     -fx-padding: 18 48 18 48;
@@ -31,42 +24,30 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-fill: #1A1A1A;
-    -fx-letter-spacing: 5px;
 }
 
-/* ── Buttons ──────────────────────────────────────────── */
 .btn-primary {
     -fx-background-color: #1A1A1A;
     -fx-text-fill: #FAFAF8;
     -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-letter-spacing: 2px;
     -fx-padding: 14 36 14 36;
     -fx-background-radius: 0;
-    -fx-border-radius: 0;
     -fx-cursor: hand;
 }
 
 .btn-primary:hover {
-    -fx-background-color: #2E2E2E;
+    -fx-background-color: #333;
 }
 
 .btn-secondary {
     -fx-background-color: transparent;
     -fx-text-fill: #1A1A1A;
     -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-letter-spacing: 2px;
     -fx-padding: 13 36 13 36;
     -fx-border-color: #1A1A1A;
     -fx-border-width: 1;
     -fx-background-radius: 0;
-    -fx-border-radius: 0;
     -fx-cursor: hand;
-}
-
-.btn-secondary:hover {
-    -fx-background-color: #F0EDE8;
 }
 
 .btn-ghost {
@@ -78,40 +59,18 @@
     -fx-cursor: hand;
 }
 
-.btn-ghost:hover {
-    -fx-text-fill: #555550;
-}
-
-/* ── Text inputs ──────────────────────────────────────── */
-.text-input {
+.text-input, .search-input {
     -fx-background-color: transparent;
     -fx-border-color: transparent transparent #C8C8C4 transparent;
     -fx-border-width: 1;
-    -fx-padding: 10 4 10 4;
-    -fx-font-size: 14px;
+    -fx-padding: 8 4;
     -fx-background-radius: 0;
-    -fx-prompt-text-fill: #AAAAAA;
 }
 
-.text-input:focused {
+.text-input:focused, .search-input:focused {
     -fx-border-color: transparent transparent #1A1A1A transparent;
 }
 
-.search-input {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent transparent #C8C8C4 transparent;
-    -fx-border-width: 1;
-    -fx-padding: 6 4;
-    -fx-font-size: 13px;
-    -fx-background-radius: 0;
-    -fx-prompt-text-fill: #AAAAAA;
-}
-
-.search-input:focused {
-    -fx-border-color: transparent transparent #1A1A1A transparent;
-}
-
-/* ── Login ────────────────────────────────────────────── */
 .login-container {
     -fx-padding: 80;
     -fx-max-width: 380;
@@ -126,7 +85,6 @@
     -fx-font-size: 12px;
 }
 
-/* ── Scroll pane ──────────────────────────────────────── */
 .scroll-pane {
     -fx-background-color: transparent;
     -fx-background: transparent;
@@ -137,7 +95,6 @@
     -fx-background-color: transparent;
 }
 
-/* ── Hero banner ──────────────────────────────────────── */
 .content-area {
     -fx-padding: 0 48 60 48;
 }
@@ -147,10 +104,9 @@
 }
 
 .hero-title {
-    -fx-font-size: 38px;
+    -fx-font-size: 36px;
     -fx-font-weight: bold;
     -fx-fill: #1A1A1A;
-    -fx-letter-spacing: 8px;
 }
 
 .hero-subtitle {
@@ -158,17 +114,10 @@
     -fx-fill: #6B6B66;
 }
 
-/* ── Sections ─────────────────────────────────────────── */
 .section-title {
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-fill: #1A1A1A;
-    -fx-letter-spacing: 4px;
-}
-
-/* ── Product detail ───────────────────────────────────── */
-.detail-layout {
-    -fx-padding: 0;
 }
 
 .product-image-placeholder {
@@ -176,7 +125,7 @@
 }
 
 .product-info {
-    -fx-padding: 48 48 48 48;
+    -fx-padding: 48;
     -fx-background-color: #FAFAF8;
 }
 
@@ -194,7 +143,6 @@
 .field-label {
     -fx-font-size: 11px;
     -fx-fill: #888880;
-    -fx-letter-spacing: 3px;
 }
 
 .size-selector {
@@ -202,11 +150,6 @@
     -fx-border-color: #C8C8C4;
     -fx-border-width: 1;
     -fx-background-radius: 0;
-}
-
-/* ── Cart ─────────────────────────────────────────────── */
-.cart-layout {
-    -fx-padding: 0;
 }
 
 .cart-items-panel {
@@ -217,20 +160,11 @@
     -fx-background-color: transparent;
     -fx-border-color: #E4E4E0;
     -fx-border-width: 1;
-    -fx-background-radius: 0;
-    -fx-border-radius: 0;
 }
 
 .order-summary {
     -fx-padding: 40 36;
     -fx-background-color: #F3F1EC;
-    -fx-border-color: #E4E4E0 transparent transparent transparent;
-    -fx-border-width: 0 0 0 1;
-}
-
-.summary-key {
-    -fx-font-size: 14px;
-    -fx-text-fill: #555550;
 }
 
 .total-value {
