@@ -75,7 +75,7 @@ public class User {
     }
 
     @Override
-    public String toString() { //Will be changed later (maybe)
+    public String toString() {
         return "User{" +
                 "userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
