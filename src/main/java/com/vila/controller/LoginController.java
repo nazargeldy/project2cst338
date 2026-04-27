@@ -1,6 +1,8 @@
 package com.vila.controller;
 
 import com.vila.SceneFactory;
+import com.vila.dao.UserDao;
+import com.vila.entity.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -28,12 +30,47 @@ public class LoginController {
             return;
         }
 
-        errorLabel.setText("");
-        // TODO: authenticate against UserDao
+        try {
+            UserDao dao = UserDao.create();
+            User user = dao.findByUsername(username);
+
+            if (user == null || !user.getUserPassword().equals(password)) {
+                errorLabel.setText("Invalid username or password.");
+                return;
+            }
+
+            errorLabel.setText("");
+            if (sceneFactory != null) sceneFactory.showHome();
+
+        } catch (Exception e) {
+            errorLabel.setText("Something went wrong. Try again.");
+        }
     }
 
     @FXML
     private void onRegister() {
-        // TODO: show registration form
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            errorLabel.setText("Please fill in all fields.");
+            return;
+        }
+
+        try {
+            UserDao dao = UserDao.create();
+
+            if (dao.findByUsername(username) != null) {
+                errorLabel.setText("Username already taken.");
+                return;
+            }
+
+            dao.insert(new User(username, password, "user"));
+            errorLabel.setText("");
+            if (sceneFactory != null) sceneFactory.showHome();
+
+        } catch (Exception e) {
+            errorLabel.setText("Something went wrong. Try again.");
+        }
     }
 }
