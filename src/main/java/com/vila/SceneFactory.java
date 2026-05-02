@@ -1,6 +1,8 @@
 package com.vila;
 
+import com.vila.controller.Navigable;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -36,7 +38,12 @@ public class SceneFactory {
 
     private void switchTo(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/vila/" + fxml));
-        Scene scene = new Scene(loader.load(), MIN_WIDTH, MIN_HEIGHT);
+        Parent root = loader.load();
+        Object ctrl = loader.getController();
+        if (ctrl instanceof Navigable nav) {
+            nav.setSceneFactory(this);
+        }
+        Scene scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
         scene.getStylesheets().add(
             getClass().getResource("/com/vila/styles.css").toExternalForm()
         );

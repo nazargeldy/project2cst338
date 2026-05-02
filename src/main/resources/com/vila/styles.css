@@ -172,3 +172,114 @@
     -fx-font-weight: bold;
     -fx-text-fill: #1A1A1A;
 }
+
+/* ── Nav links ─────────────────────────────────────────── */
+
+.nav-link {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #1A1A1A;
+    -fx-font-size: 13px;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+}
+
+.nav-link:hover {
+    -fx-text-fill: #555550;
+}
+
+.nav-link-sale {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-fill: #B03A2E;
+    -fx-font-size: 13px;
+    -fx-padding: 6 12;
+    -fx-cursor: hand;
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+
+.hero-label {
+    -fx-font-size: 11px;
+    -fx-fill: #888880;
+    -fx-font-weight: bold;
+}
+
+/* ── Products section ───────────────────────────────────── */
+
+.products-section {
+    -fx-padding: 0 0 60 0;
+    -fx-background-color: #FAFAF8;
+}
+
+.filter-bar {
+    -fx-padding: 6 48 0 48;
+    -fx-border-color: transparent transparent #E4E4E0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.filter-tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 12 20 12 20;
+    -fx-font-size: 12px;
+    -fx-text-fill: #888880;
+    -fx-cursor: hand;
+}
+
+.filter-tab:hover {
+    -fx-text-fill: #1A1A1A;
+}
+
+.filter-tab-active {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent transparent #1A1A1A transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 12 20 12 20;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1A1A1A;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.product-flow-grid {
+    -fx-padding: 32 48 0 48;
+    -fx-background-color: transparent;
+}
+
+/* ── Product card ───────────────────────────────────────── */
+
+.product-card {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+.product-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.09), 14, 0, 0, 3);
+}
+
+.card-info {
+    -fx-padding: 10 4 0 2;
+    -fx-background-color: transparent;
+}
+
+.card-name {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1A1A1A;
+}
+
+.card-price {
+    -fx-font-size: 14px;
+    -fx-text-fill: #6B6B66;
+}
+
+.card-category-tag {
+    -fx-background-color: rgba(250,250,248,0.78);
+    -fx-text-fill: #1A1A1A;
+    -fx-font-size: 9px;
+    -fx-padding: 3 8;
+    -fx-font-weight: bold;
+}

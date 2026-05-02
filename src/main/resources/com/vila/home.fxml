@@ -9,34 +9,55 @@
             styleClass="root-pane">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
+        <HBox alignment="CENTER_LEFT" spacing="6" styleClass="navbar">
             <Text text="VILA" styleClass="nav-brand"/>
+            <HBox spacing="0" style="-fx-padding: 0 0 0 20;">
+                <Button text="Women" styleClass="nav-link" onAction="#onFilterWomen"/>
+                <Button text="Men" styleClass="nav-link" onAction="#onFilterMen"/>
+                <Button text="New Arrivals" styleClass="nav-link" onAction="#onFilterAll"/>
+                <Button text="Sale" styleClass="nav-link-sale"/>
+            </HBox>
             <HBox HBox.hgrow="ALWAYS"/>
-            <TextField fx:id="searchField" promptText="Search" styleClass="search-input" prefWidth="220"/>
+            <TextField fx:id="searchField" promptText="Search" styleClass="search-input" prefWidth="190"/>
             <Button text="Search" onAction="#onSearch" styleClass="btn-ghost"/>
-            <Button text="Bag (0)" onAction="#onCartClick" styleClass="btn-ghost"/>
+            <Button fx:id="cartButton" text="Bag (0)" onAction="#onCartClick" styleClass="btn-ghost"/>
         </HBox>
     </top>
 
     <center>
         <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-            <VBox spacing="40" styleClass="content-area">
+            <VBox spacing="0">
 
-                <!-- Hero banner -->
-                <StackPane styleClass="hero-banner" minHeight="380">
+                <!-- Hero -->
+                <StackPane styleClass="hero-banner" minHeight="440">
                     <VBox alignment="CENTER" spacing="18">
-                        <Text text="NEW ARRIVALS" styleClass="hero-title"/>
-                        <Text text="Movement-ready pieces, minimal by design." styleClass="hero-subtitle"/>
-                        <Button text="SHOP NOW" styleClass="btn-primary"/>
+                        <Text text="SPRING / SUMMER 2025" styleClass="hero-label"/>
+                        <Text text="Built to Move" styleClass="hero-title"/>
+                        <Text text="Technical gear for every workout." styleClass="hero-subtitle"/>
+                        <HBox alignment="CENTER" spacing="14">
+                            <Button text="SHOP NOW" styleClass="btn-primary" onAction="#onFilterAll"/>
+                            <Button text="VIEW ALL" styleClass="btn-secondary" onAction="#onFilterAll"/>
+                        </HBox>
                     </VBox>
                 </StackPane>
 
-                <!-- Featured products -->
-                <VBox spacing="20" styleClass="section">
-                    <Text text="FEATURED" styleClass="section-title"/>
-                    <GridPane hgap="20" vgap="20" styleClass="product-grid">
-                        <!-- Product cards populated by HomeController -->
-                    </GridPane>
+                <!-- Products section -->
+                <VBox spacing="0" styleClass="products-section">
+
+                    <!-- Category filters -->
+                    <HBox styleClass="filter-bar">
+                        <Button fx:id="tabAll"          text="All"          styleClass="filter-tab-active" onAction="#onFilterAll"/>
+                        <Button fx:id="tabLeggings"     text="Leggings"     styleClass="filter-tab"        onAction="#onFilterLeggings"/>
+                        <Button fx:id="tabSportsBras"   text="Sports Bras"  styleClass="filter-tab"        onAction="#onFilterSportsBras"/>
+                        <Button fx:id="tabTops"         text="Tops"         styleClass="filter-tab"        onAction="#onFilterTops"/>
+                        <Button fx:id="tabOuterwear"    text="Outerwear"    styleClass="filter-tab"        onAction="#onFilterOuterwear"/>
+                        <Button fx:id="tabAccessories"  text="Accessories"  styleClass="filter-tab"        onAction="#onFilterAccessories"/>
+                    </HBox>
+
+                    <!-- Product grid (populated by HomeController.initialize) -->
+                    <FlowPane fx:id="productGrid" hgap="20" vgap="28"
+                              styleClass="product-flow-grid"/>
+
                 </VBox>
 
             </VBox>

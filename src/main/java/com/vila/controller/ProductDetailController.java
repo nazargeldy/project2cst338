@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-public class ProductDetailController {
+public class ProductDetailController implements Navigable {
 
     @FXML private Label productName;
     @FXML private Label productPrice;
