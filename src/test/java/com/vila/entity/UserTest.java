@@ -41,7 +41,7 @@ class UserTest {
 
         assertEquals("AdrianHere", user.getUserName());
         assertEquals("123", user.getUserPassword());
-        assertEquals("admin", user.getUserRole());
+        assertEquals(                                                                                                                                                                                                                                                           "admin", user.getUserRole());
         assertEquals(85, user.getUserID());
     }
 
