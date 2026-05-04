@@ -8,10 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class RegisterController {
 
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private PasswordField confirmPasswordField;
     @FXML private Label errorLabel;
 
     private SceneFactory sceneFactory;
@@ -21,24 +22,38 @@ public class LoginController {
     }
 
     @FXML
-    private void onLogin() {
+    private void onRegister() {
         String username = usernameField.getText().trim();
         String password = passwordField.getText();
+        String confirm  = confirmPasswordField.getText();
 
-        if (username.isEmpty() || password.isEmpty()) {
+        // Validation
+        if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
             errorLabel.setText("Please fill in all fields.");
+            return;
+        }
+        if (username.length() < 3) {
+            errorLabel.setText("Username must be at least 3 characters.");
+            return;
+        }
+        if (password.length() < 6) {
+            errorLabel.setText("Password must be at least 6 characters.");
+            return;
+        }
+        if (!password.equals(confirm)) {
+            errorLabel.setText("Passwords do not match.");
             return;
         }
 
         try {
             UserDao dao = UserDao.create();
-            User user = dao.findByUsername(username);
 
-            if (user == null || !user.getUserPassword().equals(password)) {
-                errorLabel.setText("Invalid username or password.");
+            if (dao.findByUsername(username) != null) {
+                errorLabel.setText("Username already taken.");
                 return;
             }
 
+            dao.insert(new User(username, password, "user"));
             errorLabel.setText("");
             if (sceneFactory != null) sceneFactory.showHome();
 
@@ -47,9 +62,8 @@ public class LoginController {
         }
     }
 
-    // Now just navigates to the register scene instead of handling it inline
     @FXML
-    private void onRegister() throws Exception {
-        if (sceneFactory != null) sceneFactory.showRegister();
+    private void onBackToLogin() throws Exception {
+        if (sceneFactory != null) sceneFactory.showLogin();
     }
 }
