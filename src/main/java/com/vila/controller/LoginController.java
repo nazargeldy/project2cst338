@@ -40,7 +40,16 @@ public class LoginController {
             }
 
             errorLabel.setText("");
-            if (sceneFactory != null) sceneFactory.showHome();
+
+            if (sceneFactory == null) {
+                errorLabel.setText("Scene has not been initialized");
+            }
+
+            if (user.getUserRole().equalsIgnoreCase("admin")) { //detects admin
+                sceneFactory.showAdmin();
+            } else {
+                sceneFactory.showHome();
+            }
 
         } catch (Exception e) {
             errorLabel.setText("Something went wrong. Try again.");

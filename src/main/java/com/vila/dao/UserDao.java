@@ -15,7 +15,14 @@ public class UserDao {
 
     public static UserDao create() throws SQLException {
         Connection conn = DatabaseHelper.getConnection();
-        DatabaseHelper.initTables(conn);
+
+        try {
+            DatabaseHelper.getConnection();
+        } catch (SQLException e) {
+            System.out.println("Problem with table!: ");
+            e.printStackTrace();
+        }
+
         return new UserDao(conn);
     }
 
