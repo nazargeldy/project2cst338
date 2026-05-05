@@ -5,6 +5,7 @@ import com.vila.controller.HomeController;
 import com.vila.controller.LoginController;
 import com.vila.controller.ProductDetailController;
 import com.vila.controller.RegisterController;
+import com.vila.controller.AdminController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -31,6 +32,10 @@ public class SceneFactory {
 
     public void showHome() throws Exception {
         switchTo("home.fxml");
+    }
+
+    public void showAdmin() throws Exception { //admin scene
+        switchTo("admin.fxml");
     }
 
     public void showProductDetail() throws Exception {
@@ -63,6 +68,8 @@ public class SceneFactory {
         } else if (controller instanceof ProductDetailController c) {
             c.setSceneFactory(this);
         } else if (controller instanceof CartController c) {
+            c.setSceneFactory(this);
+        } else if (controller instanceof AdminController c) {
             c.setSceneFactory(this);
         }
 

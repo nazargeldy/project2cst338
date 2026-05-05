@@ -24,8 +24,8 @@ public class RegisterController {
     @FXML
     private void onRegister() {
         String username = usernameField.getText().trim();
-        String password = passwordField.getText();
-        String confirm  = confirmPasswordField.getText();
+        String password = passwordField.getText().trim();
+        String confirm  = confirmPasswordField.getText().trim();
 
         // Validation
         if (username.isEmpty() || password.isEmpty() || confirm.isEmpty()) {
