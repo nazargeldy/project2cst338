@@ -23,7 +23,7 @@ public class LoginController {
     @FXML
     private void onLogin() {
         String username = usernameField.getText().trim();
-        String password = passwordField.getText();
+        String password = passwordField.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
             errorLabel.setText("Please fill in all fields.");
@@ -41,17 +41,18 @@ public class LoginController {
 
             errorLabel.setText("");
 
-            if (sceneFactory == null) {
+            if (sceneFactory != null) {
+                if (user.getUserRole().equalsIgnoreCase("admin")) { //detects admin account
+                    sceneFactory.showAdmin();
+                } else {
+                    sceneFactory.showHome();
+                }
+            } else {
                 errorLabel.setText("Scene has not been initialized");
             }
 
-            if (user.getUserRole().equalsIgnoreCase("admin")) { //detects admin
-                sceneFactory.showAdmin();
-            } else {
-                sceneFactory.showHome();
-            }
-
         } catch (Exception e) {
+            e.printStackTrace();
             errorLabel.setText("Something went wrong. Try again.");
         }
     }
