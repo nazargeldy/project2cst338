@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
-public class CartController {
+public class CartController implements Navigable {
 
     @FXML private ListView<String> cartList;
     @FXML private Label totalLabel;
