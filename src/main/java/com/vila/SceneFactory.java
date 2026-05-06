@@ -1,11 +1,12 @@
 package com.vila;
 
+import com.vila.controller.AdminController;
 import com.vila.controller.CartController;
 import com.vila.controller.HomeController;
 import com.vila.controller.LoginController;
+import com.vila.controller.Navigable;
 import com.vila.controller.ProductDetailController;
 import com.vila.controller.RegisterController;
-import com.vila.controller.AdminController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
