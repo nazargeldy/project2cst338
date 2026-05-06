@@ -9,25 +9,43 @@
             styleClass="root-pane">
 
     <center>
-        <VBox alignment="CENTER" spacing="28" styleClass="login-container">
+        <HBox spacing="0">
 
-            <VBox alignment="CENTER" spacing="4">
-                <Text text="VILA" styleClass="brand-wordmark"/>
-                <Text text="ACTIVEWEAR" styleClass="brand-subtext"/>
+            <!-- Left editorial panel -->
+            <StackPane styleClass="login-hero-panel" HBox.hgrow="ALWAYS">
+                <VBox alignment="BOTTOM_LEFT" style="-fx-padding: 56 52 64 60;">
+                    <Text text="VILA" styleClass="login-panel-brand"/>
+                    <Text text="Activewear" styleClass="login-panel-sub"/>
+                    <Text text=" " styleClass="login-panel-spacer"/>
+                    <Text text="Move every day." styleClass="login-panel-quote"/>
+                    <Text text="Monterey, CA" styleClass="login-panel-city"/>
+                </VBox>
+            </StackPane>
+
+            <!-- Right: login form -->
+            <VBox alignment="CENTER" spacing="28" styleClass="login-container">
+
+                <VBox alignment="CENTER" spacing="4">
+                    <Text text="VILA" styleClass="brand-wordmark"/>
+                    <Text text="ACTIVEWEAR" styleClass="brand-subtext"/>
+                </VBox>
+
+                <VBox spacing="14" styleClass="form-group">
+                    <TextField fx:id="usernameField" promptText="Username" styleClass="text-input"/>
+                    <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-input"/>
+                    <Label fx:id="errorLabel" styleClass="error-label"/>
+                </VBox>
+
+                <VBox spacing="10" alignment="CENTER">
+                    <Button text="SIGN IN" onAction="#onLogin" styleClass="btn-primary" maxWidth="Infinity"/>
+                    <Button text="CREATE ACCOUNT" onAction="#onRegister" styleClass="btn-secondary" maxWidth="Infinity"/>
+                </VBox>
+
+                <Text text="Free shipping on orders over $100" styleClass="login-hint"/>
+
             </VBox>
 
-            <VBox spacing="14" styleClass="form-group">
-                <TextField fx:id="usernameField" promptText="Username" styleClass="text-input"/>
-                <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-input"/>
-                <Label fx:id="errorLabel" styleClass="error-label"/>
-            </VBox>
-
-            <VBox spacing="10" alignment="CENTER">
-                <Button text="SIGN IN" onAction="#onLogin" styleClass="btn-primary" maxWidth="Infinity"/>
-                <Button text="CREATE ACCOUNT" onAction="#onRegister" styleClass="btn-secondary" maxWidth="Infinity"/>
-            </VBox>
-
-        </VBox>
+        </HBox>
     </center>
 
 </BorderPane>

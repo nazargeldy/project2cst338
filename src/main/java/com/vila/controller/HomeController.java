@@ -1,6 +1,8 @@
 package com.vila.controller;
 
+import com.vila.AppState;
 import com.vila.Database;
+import com.vila.ProductImages;
 import com.vila.SceneFactory;
 import com.vila.dao.ProductDAO;
 import com.vila.entity.Product;
@@ -10,38 +12,29 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class HomeController implements Navigable {
 
     @FXML private TextField searchField;
     @FXML private FlowPane productGrid;
     @FXML private Button tabAll;
-    @FXML private Button tabLeggings;
-    @FXML private Button tabSportsBras;
+    @FXML private Button tabBottoms;
     @FXML private Button tabTops;
-    @FXML private Button tabOuterwear;
-    @FXML private Button tabAccessories;
+    @FXML private Button tabHoodies;
+    @FXML private Button tabJackets;
 
     private SceneFactory sceneFactory;
     private List<Product> allProducts = new ArrayList<>();
     private Button[] filterTabs;
-
-    private static final Map<String, String> CARD_COLORS = Map.of(
-        "Leggings",   "#D4C8BE",
-        "Shorts",     "#C8CEC8",
-        "Sports Bra", "#C8D4CE",
-        "Hoodies",    "#C8C4D0",
-        "Tops",       "#D8D4C8",
-        "Jackets",    "#C4C8D4",
-        "Accessories","#D0CCCA"
-    );
 
     @Override
     public void setSceneFactory(SceneFactory factory) {
@@ -50,7 +43,7 @@ public class HomeController implements Navigable {
 
     @FXML
     public void initialize() {
-        filterTabs = new Button[]{tabAll, tabLeggings, tabSportsBras, tabTops, tabOuterwear, tabAccessories};
+        filterTabs = new Button[]{tabAll, tabBottoms, tabTops, tabHoodies, tabJackets};
         loadProducts();
         renderProducts("All");
     }
@@ -65,18 +58,18 @@ public class HomeController implements Navigable {
     }
 
     private void seedProducts(ProductDAO dao) {
-        dao.addProduct(new Product(0, "Vista Tights",    "High-waist, 4-way stretch",         88.0,  50, "Leggings"));
-        dao.addProduct(new Product(0, "Move Shorts",     "5-inch inseam, liner included",      58.0,  40, "Shorts"));
-        dao.addProduct(new Product(0, "Studio Bra",      "Medium support, removable cups",     62.0,  35, "Sports Bra"));
-        dao.addProduct(new Product(0, "Form Hoodie",     "Brushed fleece, relaxed fit",       118.0,  25, "Hoodies"));
-        dao.addProduct(new Product(0, "Ridge Tank",      "Lightweight, sweat-wicking",         42.0,  60, "Tops"));
-        dao.addProduct(new Product(0, "Terra Zip",       "Wind-resistant, two-way zip",       148.0,  20, "Jackets"));
-        dao.addProduct(new Product(0, "Pace Tights",     "Reflective details, mesh panels",    94.0,  45, "Leggings"));
-        dao.addProduct(new Product(0, "Core Belt Bag",   "1L capacity, adjustable strap",      36.0,  80, "Accessories"));
-        dao.addProduct(new Product(0, "Align Long Sleeve","Buttery-soft, four-way stretch",    78.0,  55, "Tops"));
-        dao.addProduct(new Product(0, "Summit Jacket",   "Lightweight, packable, DWR finish", 164.0,  15, "Jackets"));
-        dao.addProduct(new Product(0, "Flow Bra",        "Light support, racerback",           52.0,  45, "Sports Bra"));
-        dao.addProduct(new Product(0, "Stride Shorts",   "7-inch, side pockets",               64.0,  38, "Shorts"));
+        dao.addProduct(new Product(0, "Drift Pant",          "Wide leg, elastic waist. Side pockets. Wear them out.",            98.0,  60, "Bottoms"));
+        dao.addProduct(new Product(0, "Transit Pant",        "Slim tapered, 5-pocket stretch. From gym to street.",             112.0,  45, "Bottoms"));
+        dao.addProduct(new Product(0, "Rally Jogger",        "French terry, tapered leg, logo detail. In black.",               88.0,  55, "Bottoms"));
+        dao.addProduct(new Product(0, "Easy Jogger",         "Same cut as Rally, in chalk. Oversized, relaxed feel.",           88.0,  40, "Bottoms"));
+        dao.addProduct(new Product(0, "Studio Wide-Leg",     "High-rise waistband, fluid tech fabric. Yoga and beyond.",       108.0,  35, "Bottoms"));
+        dao.addProduct(new Product(0, "Court Tee",           "Heavyweight pima blend. Relaxed cut, runs slightly large.",       48.0,  80, "Tops"));
+        dao.addProduct(new Product(0, "Halftrack Zip",       "Modal-blend half-zip, grey heather. Runs a little oversized.",    88.0,  50, "Tops"));
+        dao.addProduct(new Product(0, "Terrain Quarter-Zip", "Ultrasoft fleece back, bone colorway. Layering essential.",       84.0,  45, "Tops"));
+        dao.addProduct(new Product(0, "Current Hoodie",      "Heavyweight French terry. Kangaroo pocket, oversized hood.",     128.0,  30, "Hoodies"));
+        dao.addProduct(new Product(0, "Ground Crew",         "350gsm fleece crewneck. Rich espresso. Minor logo.",              96.0,  40, "Hoodies"));
+        dao.addProduct(new Product(0, "Rest Day Crew",       "Grey heather crewneck. The one you'll reach for every weekend.", 104.0,  38, "Hoodies"));
+        dao.addProduct(new Product(0, "Ridge Puffer",        "Quilted shell, matte finish. Wind and light rain.",              178.0,  20, "Jackets"));
     }
 
     private void renderProducts(String category) {
@@ -87,11 +80,24 @@ public class HomeController implements Navigable {
     }
 
     private VBox createProductCard(Product p) {
-        String bg = CARD_COLORS.getOrDefault(p.getCategory(), "#EDE9E3");
-
         StackPane imageArea = new StackPane();
-        imageArea.setPrefSize(252, 308);
-        imageArea.setStyle("-fx-background-color: " + bg + ";");
+        imageArea.setPrefSize(252, 316);
+        imageArea.setStyle("-fx-background-color: #E8E4DE;");
+
+        String imgPath = ProductImages.get(p.getName());
+        if (imgPath != null) {
+            InputStream stream = getClass().getResourceAsStream(imgPath);
+            if (stream != null) {
+                try {
+                    Image img = new Image(stream);
+                    ImageView iv = new ImageView(img);
+                    iv.setFitWidth(252);
+                    iv.setFitHeight(316);
+                    iv.setPreserveRatio(false);
+                    imageArea.getChildren().add(iv);
+                } catch (Exception ignored) {}
+            }
+        }
 
         Label tag = new Label(p.getCategory().toUpperCase());
         tag.getStyleClass().add("card-category-tag");
@@ -111,7 +117,10 @@ public class HomeController implements Navigable {
         VBox card = new VBox(0, imageArea, info);
         card.getStyleClass().add("product-card");
         card.setPrefWidth(252);
-        card.setOnMouseClicked(e -> navigateToDetail());
+        card.setOnMouseClicked(e -> {
+            AppState.selectedProduct = p;
+            navigateToDetail();
+        });
 
         return card;
     }
@@ -127,33 +136,24 @@ public class HomeController implements Navigable {
     private void setActiveTab(Button clicked) {
         for (Button tab : filterTabs) {
             tab.getStyleClass().remove("filter-tab-active");
-            if (!tab.getStyleClass().contains("filter-tab")) {
-                tab.getStyleClass().add("filter-tab");
-            }
+            if (!tab.getStyleClass().contains("filter-tab")) tab.getStyleClass().add("filter-tab");
         }
         clicked.getStyleClass().remove("filter-tab");
-        if (!clicked.getStyleClass().contains("filter-tab-active")) {
-            clicked.getStyleClass().add("filter-tab-active");
-        }
+        if (!clicked.getStyleClass().contains("filter-tab-active")) clicked.getStyleClass().add("filter-tab-active");
     }
 
-    @FXML private void onFilterAll()         { setActiveTab(tabAll);          renderProducts("All"); }
-    @FXML private void onFilterLeggings()    { setActiveTab(tabLeggings);     renderProducts("Leggings"); }
-    @FXML private void onFilterSportsBras()  { setActiveTab(tabSportsBras);   renderProducts("Sports Bra"); }
-    @FXML private void onFilterTops()        { setActiveTab(tabTops);         renderProducts("Tops"); }
-    @FXML private void onFilterOuterwear()   { setActiveTab(tabOuterwear);    renderProducts("Jackets"); }
-    @FXML private void onFilterAccessories() { setActiveTab(tabAccessories);  renderProducts("Accessories"); }
-
-    @FXML private void onFilterWomen() { setActiveTab(tabAll); renderProducts("All"); }
-    @FXML private void onFilterMen()   { setActiveTab(tabAll); renderProducts("All"); }
+    @FXML private void onFilterAll()      { setActiveTab(tabAll);      renderProducts("All"); }
+    @FXML private void onFilterBottoms()  { setActiveTab(tabBottoms);  renderProducts("Bottoms"); }
+    @FXML private void onFilterTops()     { setActiveTab(tabTops);     renderProducts("Tops"); }
+    @FXML private void onFilterHoodies()  { setActiveTab(tabHoodies);  renderProducts("Hoodies"); }
+    @FXML private void onFilterJackets()  { setActiveTab(tabJackets);  renderProducts("Jackets"); }
+    @FXML private void onFilterWomen()    { setActiveTab(tabAll);      renderProducts("All"); }
+    @FXML private void onFilterMen()      { setActiveTab(tabAll);      renderProducts("All"); }
 
     @FXML
     private void onSearch() {
         String q = searchField.getText().trim().toLowerCase();
-        if (q.isEmpty()) {
-            renderProducts("All");
-            return;
-        }
+        if (q.isEmpty()) { renderProducts("All"); return; }
         productGrid.getChildren().clear();
         allProducts.stream()
                 .filter(p -> p.getName().toLowerCase().contains(q)

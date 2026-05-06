@@ -12,31 +12,52 @@
         <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
             <Text text="VILA" styleClass="nav-brand"/>
             <HBox HBox.hgrow="ALWAYS"/>
-            <Button text="← Back" onAction="#onBack" styleClass="btn-ghost"/>
+            <Button text="&#8592; Back" onAction="#onBack" styleClass="btn-ghost"/>
         </HBox>
     </top>
 
     <center>
-        <HBox spacing="0" styleClass="detail-layout">
+        <HBox spacing="0">
 
-            <!-- Product image area -->
-            <StackPane styleClass="product-image-placeholder" HBox.hgrow="ALWAYS" minHeight="580"/>
+            <!-- Product image -->
+            <StackPane fx:id="imageContainer" styleClass="detail-image-container" HBox.hgrow="ALWAYS"/>
 
             <!-- Product info panel -->
-            <VBox spacing="22" styleClass="product-info" minWidth="380">
-                <Label fx:id="productName" text="Product Name" styleClass="product-title"/>
-                <Label fx:id="productPrice" text="$0.00" styleClass="product-price"/>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane" minWidth="400" maxWidth="460">
+                <VBox spacing="0" styleClass="product-info">
 
-                <VBox spacing="8">
-                    <Text text="SIZE" styleClass="field-label"/>
-                    <ComboBox fx:id="sizeSelector" promptText="Select size"
-                              styleClass="size-selector" maxWidth="Infinity"/>
-                    <Label fx:id="sizeError" styleClass="error-label"/>
+                    <Label fx:id="productName" text="Product" styleClass="product-title"/>
+                    <Label fx:id="productPrice" text="$0" styleClass="product-price" style="-fx-padding: 8 0 20 0;"/>
+
+                    <Separator style="-fx-padding: 0 0 20 0;"/>
+
+                    <Label fx:id="productDescription" text="" styleClass="detail-description"
+                           wrapText="true" style="-fx-padding: 18 0 24 0;"/>
+
+                    <VBox spacing="8" style="-fx-padding: 0 0 20 0;">
+                        <Text text="SIZE" styleClass="field-label"/>
+                        <ComboBox fx:id="sizeSelector" promptText="Select size"
+                                  styleClass="size-selector" maxWidth="Infinity"/>
+                        <Label fx:id="sizeError" styleClass="error-label"/>
+                    </VBox>
+
+                    <Button text="ADD TO BAG" onAction="#onAddToCart"
+                            styleClass="btn-primary" maxWidth="Infinity"/>
+
+                    <VBox spacing="6" styleClass="detail-care">
+                        <Text text="CARE" styleClass="field-label"/>
+                        <Text text="Machine wash cold, gentle cycle." styleClass="detail-care-text"/>
+                        <Text text="Tumble dry low. Do not bleach." styleClass="detail-care-text"/>
+                        <Text text="Lay flat to dry for best results." styleClass="detail-care-text"/>
+                    </VBox>
+
+                    <VBox spacing="6" styleClass="detail-shipping">
+                        <Text text="Free shipping on orders over $100" styleClass="detail-info-text"/>
+                        <Text text="Easy 30-day returns" styleClass="detail-info-text"/>
+                    </VBox>
+
                 </VBox>
-
-                <Button text="ADD TO BAG" onAction="#onAddToCart"
-                        styleClass="btn-primary" maxWidth="Infinity"/>
-            </VBox>
+            </ScrollPane>
 
         </HBox>
     </center>

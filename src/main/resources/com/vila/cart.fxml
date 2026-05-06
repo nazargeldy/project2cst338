@@ -12,30 +12,51 @@
         <HBox alignment="CENTER_LEFT" spacing="20" styleClass="navbar">
             <Text text="VILA" styleClass="nav-brand"/>
             <HBox HBox.hgrow="ALWAYS"/>
-            <Button text="Continue Shopping" onAction="#onContinueShopping" styleClass="btn-ghost"/>
+            <Button text="&#8592; Continue Shopping" onAction="#onContinueShopping" styleClass="btn-ghost"/>
         </HBox>
     </top>
 
     <center>
-        <HBox spacing="0" styleClass="cart-layout">
+        <HBox spacing="0">
 
             <!-- Cart items -->
-            <VBox HBox.hgrow="ALWAYS" spacing="16" styleClass="cart-items-panel">
-                <Text text="YOUR BAG" styleClass="section-title"/>
+            <VBox HBox.hgrow="ALWAYS" spacing="0" styleClass="cart-items-panel">
+                <Text text="YOUR BAG" styleClass="section-title" style="-fx-padding: 0 0 20 0;"/>
+                <Separator/>
                 <ListView fx:id="cartList" VBox.vgrow="ALWAYS" styleClass="cart-list"/>
+                <Label text="Your bag is empty." styleClass="cart-empty-label"/>
             </VBox>
 
             <!-- Order summary sidebar -->
-            <VBox spacing="16" styleClass="order-summary" minWidth="320">
+            <VBox spacing="16" styleClass="order-summary" minWidth="340">
                 <Text text="ORDER SUMMARY" styleClass="section-title"/>
                 <Separator/>
+
                 <HBox>
-                    <Label text="Total" HBox.hgrow="ALWAYS" styleClass="summary-key"/>
-                    <Label fx:id="totalLabel" text="$0.00" styleClass="total-value"/>
+                    <Label text="Subtotal" HBox.hgrow="ALWAYS" styleClass="summary-key"/>
+                    <Label fx:id="totalLabel" text="$0.00" styleClass="summary-value"/>
                 </HBox>
+                <HBox>
+                    <Label text="Shipping" HBox.hgrow="ALWAYS" styleClass="summary-key"/>
+                    <Label text="Calculated at checkout" styleClass="summary-value-muted"/>
+                </HBox>
+                <HBox>
+                    <Label text="Estimated Tax" HBox.hgrow="ALWAYS" styleClass="summary-key"/>
+                    <Label text="—" styleClass="summary-value-muted"/>
+                </HBox>
+
                 <Separator/>
+
+                <HBox>
+                    <Label text="Total" HBox.hgrow="ALWAYS" styleClass="summary-key-bold"/>
+                    <Label text="$0.00" styleClass="total-value"/>
+                </HBox>
+
                 <Button text="PROCEED TO CHECKOUT" onAction="#onCheckout"
                         styleClass="btn-primary" maxWidth="Infinity"/>
+
+                <Text text="Free shipping on orders over $100" styleClass="cart-shipping-note"/>
+                <Text text="Easy 30-day returns" styleClass="cart-shipping-note"/>
             </VBox>
 
         </HBox>

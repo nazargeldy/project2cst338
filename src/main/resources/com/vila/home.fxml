@@ -9,18 +9,18 @@
             styleClass="root-pane">
 
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="6" styleClass="navbar">
+        <HBox alignment="CENTER_LEFT" spacing="4" styleClass="navbar">
             <Text text="VILA" styleClass="nav-brand"/>
-            <HBox spacing="0" style="-fx-padding: 0 0 0 20;">
+            <HBox spacing="0" style="-fx-padding: 0 0 0 24;">
                 <Button text="Women" styleClass="nav-link" onAction="#onFilterWomen"/>
-                <Button text="Men" styleClass="nav-link" onAction="#onFilterMen"/>
+                <Button text="Men"   styleClass="nav-link" onAction="#onFilterMen"/>
                 <Button text="New Arrivals" styleClass="nav-link" onAction="#onFilterAll"/>
-                <Button text="Sale" styleClass="nav-link-sale"/>
+                <Button text="Sale"  styleClass="nav-link-sale"/>
             </HBox>
             <HBox HBox.hgrow="ALWAYS"/>
             <TextField fx:id="searchField" promptText="Search" styleClass="search-input" prefWidth="190"/>
             <Button text="Search" onAction="#onSearch" styleClass="btn-ghost"/>
-            <Button fx:id="cartButton" text="Bag (0)" onAction="#onCartClick" styleClass="btn-ghost"/>
+            <Button fx:id="cartButton" text="Bag" onAction="#onCartClick" styleClass="btn-ghost"/>
         </HBox>
     </top>
 
@@ -46,17 +46,62 @@
 
                     <!-- Category filters -->
                     <HBox styleClass="filter-bar">
-                        <Button fx:id="tabAll"          text="All"          styleClass="filter-tab-active" onAction="#onFilterAll"/>
-                        <Button fx:id="tabLeggings"     text="Leggings"     styleClass="filter-tab"        onAction="#onFilterLeggings"/>
-                        <Button fx:id="tabSportsBras"   text="Sports Bras"  styleClass="filter-tab"        onAction="#onFilterSportsBras"/>
-                        <Button fx:id="tabTops"         text="Tops"         styleClass="filter-tab"        onAction="#onFilterTops"/>
-                        <Button fx:id="tabOuterwear"    text="Outerwear"    styleClass="filter-tab"        onAction="#onFilterOuterwear"/>
-                        <Button fx:id="tabAccessories"  text="Accessories"  styleClass="filter-tab"        onAction="#onFilterAccessories"/>
+                        <Button fx:id="tabAll"      text="All"       styleClass="filter-tab-active" onAction="#onFilterAll"/>
+                        <Button fx:id="tabBottoms"  text="Bottoms"   styleClass="filter-tab"        onAction="#onFilterBottoms"/>
+                        <Button fx:id="tabTops"     text="Tops"      styleClass="filter-tab"        onAction="#onFilterTops"/>
+                        <Button fx:id="tabHoodies"  text="Hoodies"   styleClass="filter-tab"        onAction="#onFilterHoodies"/>
+                        <Button fx:id="tabJackets"  text="Jackets"   styleClass="filter-tab"        onAction="#onFilterJackets"/>
                     </HBox>
 
-                    <!-- Product grid (populated by HomeController.initialize) -->
-                    <FlowPane fx:id="productGrid" hgap="20" vgap="28"
-                              styleClass="product-flow-grid"/>
+                    <!-- Product grid -->
+                    <FlowPane fx:id="productGrid" hgap="20" vgap="28" styleClass="product-flow-grid"/>
+
+                </VBox>
+
+                <!-- Footer -->
+                <VBox styleClass="site-footer">
+                    <HBox spacing="0" styleClass="footer-inner">
+
+                        <!-- Brand column -->
+                        <VBox spacing="10" HBox.hgrow="ALWAYS">
+                            <Text text="VILA" styleClass="footer-brand"/>
+                            <Text text="Monterey, California" styleClass="footer-sub"/>
+                            <Text text="Movement for every body." styleClass="footer-tagline"/>
+                        </VBox>
+
+                        <!-- Contact column -->
+                        <VBox spacing="8" minWidth="220">
+                            <Text text="CONTACT" styleClass="footer-heading"/>
+                            <Text text="580 Pacific Grove Ave, Suite 100" styleClass="footer-text"/>
+                            <Text text="Monterey, CA 93940" styleClass="footer-text"/>
+                            <Text text="(831) 649-0241" styleClass="footer-text"/>
+                            <Text text="hello@vilaactivewear.com" styleClass="footer-text"/>
+                        </VBox>
+
+                        <!-- Hours column -->
+                        <VBox spacing="8" minWidth="200">
+                            <Text text="HOURS" styleClass="footer-heading"/>
+                            <Text text="Mon – Fri  10am – 7pm" styleClass="footer-text"/>
+                            <Text text="Saturday   10am – 6pm" styleClass="footer-text"/>
+                            <Text text="Sunday     11am – 5pm" styleClass="footer-text"/>
+                        </VBox>
+
+                        <!-- Info column -->
+                        <VBox spacing="8" minWidth="200">
+                            <Text text="INFO" styleClass="footer-heading"/>
+                            <Text text="Free shipping over $100" styleClass="footer-text"/>
+                            <Text text="Easy 30-day returns" styleClass="footer-text"/>
+                            <Text text="Size guide" styleClass="footer-text"/>
+                            <Text text="Care instructions" styleClass="footer-text"/>
+                        </VBox>
+
+                    </HBox>
+
+                    <Separator styleClass="footer-divider"/>
+
+                    <HBox alignment="CENTER_LEFT" styleClass="footer-bottom">
+                        <Text text="© 2025 Vila Activewear  ·  All rights reserved." styleClass="footer-copy"/>
+                    </HBox>
 
                 </VBox>
 
